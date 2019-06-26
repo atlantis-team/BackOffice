@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/devices', 'DeviceController@index')->name('devices');
+Route::get('/devices/all', 'DeviceController@getDevices')->name('devices.all');
+Route::post('/devices/add_user', 'DeviceController@addUser')->name('devices.add.user');
+Route::post('/devices/remove_user', 'DeviceController@removeUser')->name('devices.remove.user');
+
+Route::get('/user-autocomplete-ajax', 'UserController@dataAjax')->name('users.ajax');
