@@ -5,9 +5,17 @@
 </head>
 <body class="bg-light">
 
+@include('includes.header')
+
 <main role="main" class="container">
 
-    @yield('content')
+    <div class="card">
+        <div class="card-body">
+
+            @yield('content')
+
+        </div>
+    </div>
 
 </main>
 

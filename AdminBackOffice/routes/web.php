@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/devices', 'DeviceController@index')->name('devices');
 Route::get('/devices/all', 'DeviceController@getDevices')->name('devices.all');
