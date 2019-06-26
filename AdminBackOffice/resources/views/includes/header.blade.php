@@ -16,14 +16,28 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <!-- Home button -->
-                <li class="nav-item {{ Request::is('/') ? 'active' : '' }}">
+                <li class="nav-item {{ Request::is('/') ? 'active font-weight-bold' : '' }}">
                     <a class="nav-link" href="{{ route('home') }}">Home</a>
                 </li>
                 <!-- Devices button -->
-                <li class="nav-item {{ Request::is('devices') ? 'active' : '' }}">
+                <li class="nav-item {{ Request::is('devices') ? 'active font-weight-bold' : '' }}">
                     <a class="nav-link" href="{{ route('devices') }}">Devices</a>
                 </li>
             </ul>
+        @if(!Auth::check())
+            <!-- Login button -->
+                <span class="nav-link d-none d-lg-block text-danger font-weight-bold">
+                    Login system disabled for PoC only
+                </span>
+                <a class="btn btn-sm btn-outline-primary nav-link" href="{{route('login')}}">Login</a>
+        @else
+            <!-- Logoff button -->
+                <span class="nav-link d-none d-lg-block">
+                    Connected as ADMIN
+                </span>
+                <a class="btn btn-sm btn-outline-danger nav-link" href="{{route('logout')}}">Logout</a>
+            @endif
+
         </div>
     </div>
 </nav>

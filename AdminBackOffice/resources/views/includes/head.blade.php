@@ -3,7 +3,7 @@
 <meta name="author" content="Raphael OCTAU">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>Atlantis Admin</title>
+<title>Atlantis Back Office</title>
 
 <!-- CSS -->
 <!-- Including Bootstrap -->

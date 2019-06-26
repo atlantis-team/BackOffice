@@ -2,39 +2,46 @@
 
 @section('content')
 
-    <table class="table border" id="devicesTable">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>DeviceName</th>
-            <th>Metrics count</th>
-            <th>User</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-    </table>
+    <div class="card">
+        <div class="card-body">
 
-    <div class="modal fade" id="userModal" role="dialog" aria-labelledby="userModalLabel"
-         aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="userModalLabel">Edit User</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <select class="userDropdown form-control" name="userDropdown"></select>
-                    <div class="alert alert-danger m-0 mt-3" role="alert" style="display:none;">
-                        Error
+            <table class="table border" id="devicesTable">
+                <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>DeviceName</th>
+                    <th>Metrics count</th>
+                    <th>User</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+            </table>
+
+            <div class="modal fade" id="userModal" role="dialog" aria-labelledby="userModalLabel"
+                 aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="userModalLabel">Edit User</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <select class="userDropdown form-control" name="userDropdown"></select>
+                            <div class="alert alert-danger m-0 mt-3" role="alert" style="display:none;">
+                                Error
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                            <button type="button" class="btn btn-primary" id="btn-user-modal-apply">Apply changes
+                            </button>
+                        </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="btn-user-modal-apply">Apply changes</button>
-                </div>
             </div>
+
         </div>
     </div>
 

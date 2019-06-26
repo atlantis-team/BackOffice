@@ -9,13 +9,7 @@
 
 <main role="main" class="container">
 
-    <div class="card">
-        <div class="card-body">
-
-            @yield('content')
-
-        </div>
-    </div>
+    @yield('content')
 
 </main>
 
