@@ -16,7 +16,7 @@ class Device extends Model
      * @var array
      */
     protected $fillable = [
-        'User_ID', 'DeviceName',
+        'User_OID', 'DeviceName',
     ];
 
     /**
@@ -24,7 +24,7 @@ class Device extends Model
      */
     public function user()
     {
-        return $this->hasOne('App\User', 'ID', 'User_ID');
+        return $this->hasOne('App\User', 'oid', 'User_OID');
     }
 
     /**

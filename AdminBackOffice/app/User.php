@@ -10,6 +10,9 @@ class User extends Authenticatable
 
     protected $table = 'users';
 
+    protected $primaryKey = 'oid';
+    public $incrementing = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,6 +27,6 @@ class User extends Authenticatable
      */
     public function devices()
     {
-        return $this->hasMany('App\Device', 'User_ID', 'ID');
+        return $this->hasMany('App\Device', 'User_OID', 'oid');
     }
 }

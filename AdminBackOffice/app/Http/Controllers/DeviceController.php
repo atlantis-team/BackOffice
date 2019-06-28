@@ -48,11 +48,11 @@ class DeviceController extends Controller
                 return '<button type="button" class="btn-edit-user btn btn-primary btn-sm" data-toggle="modal" data-target="#userModal">Edit</button>' .
                     '<button type="button" class="btn-remove-user btn btn-danger btn-sm ml-2" ' . (!$device->user ? 'disabled' : '') . '>Remove</button>';
             })
-            ->editColumn('User_ID', function (Device $device) {
+            ->editColumn('User_OID', function (Device $device) {
                 if (!$device->user) return '<span data-user-id></span>';
-                return '<span data-user-id="' . $device->user->ID . '">' . $device->user->FirstName . ' ' . $device->user->LastName . '</span>';
+                return '<span data-user-id="' . $device->user->oid . '">' . $device->user->FirstName . ' ' . $device->user->LastName . '</span>';
             })
-            ->rawColumns(['Actions', 'User_ID'])
+            ->rawColumns(['Actions', 'User_OID'])
             ->toJson();
     }
 
@@ -65,12 +65,12 @@ class DeviceController extends Controller
     public function addUser(Request $request)
     {
         try {
-            Device::where('ID', $request['device_id'])->update(array('User_ID' => $request['user_id']));
+            Device::where('ID', $request['device_id'])->update(array('User_OID' => $request['user_id']));
             $user = User::find($request['user_id']);
             return response()->json([
                 'success' => __('User successfully updated'),
                 'data' => [
-                    'user_id' => $user->ID,
+                    'user_id' => $user->oid,
                     'user_name' => $user->FirstName . " " . $user->LastName
                 ]
             ]);
@@ -89,7 +89,7 @@ class DeviceController extends Controller
     public function removeUser(Request $request)
     {
         try {
-            Device::where('ID', $request['device_id'])->update(array('User_ID' => null));
+            Device::where('ID', $request['device_id'])->update(array('User_OID' => null));
             return response()->json([
                 'success' => __('User successfully removed')
             ]);

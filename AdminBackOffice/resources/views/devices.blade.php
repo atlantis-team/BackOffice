@@ -11,7 +11,7 @@
                     <th>ID</th>
                     <th>DeviceName</th>
                     <th>Metrics count</th>
-                    <th>User</th>
+                    <th>User OID</th>
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -58,7 +58,7 @@
                     {data: 'ID', name: 'ID'},
                     {data: 'DeviceName', name: 'DeviceName'},
                     {data: 'MetricsCount', name: 'MetricsCount'},
-                    {data: 'User_ID', name: 'User_ID'},
+                    {data: 'User_OID', name: 'User_OID'},
                     {data: 'Actions', name: 'Actions'},
                 ]
             });
@@ -68,7 +68,6 @@
             let deviceId = e.relatedTarget.closest('tr').getAttribute('id');
             let userName = e.relatedTarget.closest('tr').childNodes[3].childNodes[0].innerHTML;
             let userId = e.relatedTarget.closest('tr').childNodes[3].childNodes[0].getAttribute('data-user-id');
-            console.log(deviceId, userName, userId);
 
             $(this).find('#btn-user-modal-apply').attr('device-id', deviceId);
 
@@ -86,7 +85,7 @@
                             results: $.map(data, function (item) {
                                 return {
                                     text: item.FirstName + " " + item.LastName,
-                                    id: item.ID
+                                    id: item.oid
                                 }
                             })
                         };
@@ -124,8 +123,6 @@
 
         $('#devicesTable').on('click', '.btn-remove-user', function () {
             let deviceId = $(this).closest('tr').attr('id');
-
-            console.log($(this));
 
             $.ajax({
                 url: "{{route('devices.remove.user')}}",

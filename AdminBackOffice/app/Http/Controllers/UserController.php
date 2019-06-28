@@ -24,7 +24,7 @@ class UserController extends Controller
 
         if ($request->has('q')) {
             $search = $request->q;
-            $data = User::select("ID", "FirstName", "LastName")->where('FirstName', 'LIKE', "%$search%")->get();
+            $data = User::select("oid", "FirstName", "LastName")->where('FirstName', 'LIKE', "%$search%")->get();
         }
 
         return response()->json($data);
