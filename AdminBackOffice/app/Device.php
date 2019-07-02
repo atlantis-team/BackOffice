@@ -16,7 +16,7 @@ class Device extends Model
      * @var array
      */
     protected $fillable = [
-        'User_OID', 'DeviceName',
+        'User_OID', 'DeviceName', 'MacAddress', 'DeviceType'
     ];
 
     /**

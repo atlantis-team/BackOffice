@@ -5,14 +5,15 @@
     <div class="card">
         <div class="card-body">
 
-            <table class="table border" id="devicesTable">
+            <table class="table border table-devices" id="devicesTable">
                 <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>DeviceName</th>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Mac address</th>
                     <th>Metrics count</th>
-                    <th>User OID</th>
-                    <th>Actions</th>
+                    <th>User</th>
+                    <th class="action">Actions</th>
                 </tr>
                 </thead>
             </table>
@@ -55,19 +56,20 @@
                 serverSide: true,
                 ajax: '{!! route('devices.all') !!}',
                 columns: [
-                    {data: 'ID', name: 'ID'},
                     {data: 'DeviceName', name: 'DeviceName'},
+                    {data: 'DeviceType', name: 'DeviceType'},
+                    {data: 'MacAddress', name: 'MacAddress'},
                     {data: 'MetricsCount', name: 'MetricsCount'},
                     {data: 'User_OID', name: 'User_OID'},
-                    {data: 'Actions', name: 'Actions'},
+                    {data: 'Actions', name: 'Actions', orderable: false},
                 ]
             });
         });
 
         $('#userModal').on('show.bs.modal', function (e) {
             let deviceId = e.relatedTarget.closest('tr').getAttribute('id');
-            let userName = e.relatedTarget.closest('tr').childNodes[3].childNodes[0].innerHTML;
-            let userId = e.relatedTarget.closest('tr').childNodes[3].childNodes[0].getAttribute('data-user-id');
+            let userName = e.relatedTarget.closest('tr').childNodes[4].childNodes[0].innerHTML;
+            let userId = e.relatedTarget.closest('tr').childNodes[4].childNodes[0].getAttribute('data-user-id');
 
             $(this).find('#btn-user-modal-apply').attr('device-id', deviceId);
 

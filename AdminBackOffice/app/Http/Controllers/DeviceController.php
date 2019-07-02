@@ -45,8 +45,8 @@ class DeviceController extends Controller
                 return $device->metrics->count();
             })
             ->addColumn('Actions', function (Device $device) {
-                return '<button type="button" class="btn-edit-user btn btn-primary btn-sm" data-toggle="modal" data-target="#userModal">Edit</button>' .
-                    '<button type="button" class="btn-remove-user btn btn-danger btn-sm ml-2" ' . (!$device->user ? 'disabled' : '') . '>Remove</button>';
+                return '<button type="button" class="btn-edit-user btn btn-outline-primary btn-sm" data-toggle="modal" data-target="#userModal"><i class="fas fa-user-edit"></i></button>' .
+                    '<button type="button" class="btn-remove-user btn btn-outline-danger btn-sm ml-2" ' . (!$device->user ? 'disabled' : '') . '><i class="fas fa-user-times"></i></button>';
             })
             ->editColumn('User_OID', function (Device $device) {
                 if (!$device->user) return '<span data-user-id></span>';
